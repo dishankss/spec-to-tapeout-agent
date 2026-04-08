@@ -13,10 +13,17 @@ The workflow is fully automated and reproducible.
 
 Run the following commands in Ubuntu / WSL:
 
+```bash
 sudo apt update
 sudo apt install python3-yaml iverilog nodejs npm
 sudo npm install -g @openai/codex
+```
 
+After installation, run:
+
+```bash
+codex
+```
 #After installation, run:
 
 codex
@@ -25,10 +32,10 @@ and sign in using your ChatGPT account or API key.
 
 ## How to Run the System (Single Command)
 
+```bash
 cd scripts
 python3 main.py
-
-This command executes the full pipeline automatically.
+```
 
 
 ## Input Description
@@ -85,18 +92,10 @@ Detailed steps:
 
 ## Running Hidden Testcases
 
-To test new or hidden problems:
-
-1. Add new YAML file(s) into:
-
-problems/
-
-2. Run:
-
+```bash
 cd scripts
 python3 main.py
-
-The system automatically detects and processes all YAML files.
+```
 
 ## Execution Requirement
 
