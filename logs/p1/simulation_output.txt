@@ -1,0 +1,17 @@
+OBS detected=0
+OBS detected=0
+OBS detected=0
+OBS detected=0
+OBS detected=0
+OBS detected=1
+OBS detected=0
+OBS detected=0
+OBS detected=0
+OBS detected=1
+OBS detected=0
+OBS detected=0
+OBS detected=0
+OBS detected=0
+OBS detected=0
+OBS detected=0
+/mnt/d/tempo/pytrial/vlsi_agent_project/generated/p1/tb.sv:34: $finish called at 180 (1s)
