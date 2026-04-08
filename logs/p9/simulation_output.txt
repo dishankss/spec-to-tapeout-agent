@@ -1,0 +1,2 @@
+OBS y_out=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+/mnt/d/tempo/pytrial/vlsi_agent_project/generated/p9/tb.sv:26: $finish called at 21 (1s)
