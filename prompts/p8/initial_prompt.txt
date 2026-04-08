@@ -1,0 +1,34 @@
+You are a hardware design expert.
+
+Generate synthesizable SystemVerilog RTL for the following specification.
+
+Module Name: fp16_multiplier
+Description: 16-bit floating-point multiplier (IEEE 754 half-precision compatible) with support for zero detection and rounding to nearest even. Takes two 16-bit FP16 inputs and computes the product in a single cycle.
+
+Ports:
+- a (input)
+- b (input)
+- result (output)
+
+IMPORTANT:
+- Follow this exact module signature exactly:
+module fp16_multiplier(
+  input  logic [15:0] a,
+  input  logic [15:0] b,
+  output logic [15:0] result
+);
+
+
+- Use the same language style as the signature.
+- If the signature uses SystemVerilog constructs, generate synthesizable SystemVerilog.
+- Use only synthesizable RTL.
+- Prefer simple logic/reg/assign/always_ff/always_comb constructs.
+- Avoid structs, interfaces, classes, DPI, assertions, and fancy verification-only constructs.
+- Avoid multidimensional packed arrays unless the spec clearly requires them.
+- Keep arithmetic explicit and widths clear.
+- Do not rename module names, ports, widths, parameter names, or reset style.
+- Do not add extra ports.
+- Do not include testbench code.
+- Do not include comments outside the HDL if possible.
+- Output must be a COMPLETE module including module and endmodule.
+- Return ONLY the HDL code.
