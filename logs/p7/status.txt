@@ -1,0 +1,11 @@
+PASS
+Iterations: 1
+Expected: official TB
+Actual  : exp(1.0) = 341 (expected ≈ 341)
+PASS
+/mnt/d/tempo/pytrial/vlsi_agent_project/generated/p7/tb.sv:55: $finish called at 50 (1s)
+
+POST_SYNTH: PASS
+OpenROAD: PASS
+GDS (original): /home/dusky/OpenROAD-flow-scripts/flow/results/sky130hd/exp_fixed_point/base/6_final.gds
+GDS (copied): /mnt/d/tempo/pytrial/vlsi_agent_project/generated/p7/openroad/exp_fixed_point.gds
