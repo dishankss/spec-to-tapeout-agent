@@ -67,8 +67,6 @@ Edit `scripts/main.py`:
 PROJECT_ROOT = Path("/your/path/to/project")
 OPENROAD_FLOW_ROOT = Path("/your/path/to/OpenROAD-flow-scripts/flow")
 ```
-
-Also for visible problems create folder inside project folder and put your visible testbenches in that folder and change names for those testbenches inside main.py.
 ---
 
 ### 2. Verify Tools
