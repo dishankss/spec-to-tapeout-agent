@@ -133,6 +133,48 @@ python3 main.py
 ```
 
 ---
+### 7. Visible Testbench Setup (Important)
+
+For visible problems, the system uses official testbenches instead of generated ones.
+
+You must:
+
+* Create a folder in the project root:
+
+```
+visible_tb/
+```
+
+* Place all official testbench files inside this folder.
+
+Example:
+
+```
+visible_tb/
+├── iclad_seq_detector_tb.v
+├── iclad_dot_product_tb.v
+├── iclad_exp_tb.v
+├── iclad_fp16_mult_tb.v
+├── iclad_fir_tb.v
+```
+
+* Ensure the filenames match the mapping defined in `main.py`:
+
+```python
+VISIBLE_TB_MAP = {
+    "p1": "iclad_seq_detector_tb.v",
+    "p5": "iclad_dot_product_tb.v",
+    "p7": "iclad_exp_tb.v",
+    "p8": "iclad_fp16_mult_tb.v",
+    "p9": "iclad_fir_tb.v"
+}
+```
+
+If your filenames are different, update this mapping accordingly.
+
+---
+
+Without this setup, visible problems will not run correctly.
 
 ## How to Run the System
 
