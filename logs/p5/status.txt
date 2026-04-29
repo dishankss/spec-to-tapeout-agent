@@ -1,4 +1,0 @@
-PASS
-Iterations: 3
-Expected: valid=[0, 0, 1, 0, 0, 0], dot_out_on_valid=[96]
-Actual  : valid=[0, 0, 1, 0, 0, 0], dot_out_on_valid=[96]
