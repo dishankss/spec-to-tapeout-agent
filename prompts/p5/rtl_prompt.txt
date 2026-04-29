@@ -1,0 +1,104 @@
+You are a hardware design expert.
+
+Generate synthesizable SystemVerilog RTL for the following specification.
+
+Module Name: dot_product
+Description: Parameterized pipelined dot product engine. Accepts two input vectors A and B of length N, performs element-wise signed multiplication    followed by summation of partial products. The result is a single signed scalar value with a valid flag.
+Additional rules for this module:
+
+    - DO NOT use variable indexing like A[i] or B[i] inside expressions.
+    - DO NOT use loops inside combinational logic.
+
+    - Instead, manually unroll the dot product:
+    dot_out = A[0]*B[0] + A[1]*B[1] + ... + A[N-1]*B[N-1];
+
+    - Use explicit signed multiplication and addition.
+    - Use intermediate wires if needed.
+
+    - Keep everything fully synthesizable and simple.
+
+Technology Node: SkyWater 130HD
+Clock Period: 4.5ns
+
+Parameters:
+- N = 8
+- WIDTH = 8
+
+Ports:
+- clk (input)
+- rst (input)
+- A (input)
+- B (input)
+- dot_out (output)
+- valid (output)
+
+IMPORTANT:
+- Follow this exact module signature exactly:
+module dot_product #(
+    parameter int N = 8,
+    parameter int WIDTH = 8
+) (
+    input  logic clk,
+    input  logic rst,
+    input  logic signed [N-1:0][WIDTH-1:0] A,
+    input  logic signed [N-1:0][WIDTH-1:0] B,
+    output logic signed [2*WIDTH+3:0] dot_out,
+    output logic valid
+);
+
+
+SYNTHESIS RULES (VERY IMPORTANT):
+- Use ONLY synthesizable RTL (target: Yosys + OpenROAD).
+- Use synchronous reset ONLY:
+  - Use: always @(posedge clk)
+  - Do NOT use: posedge reset or negedge reset
+- Reset must be handled inside the clocked always block:
+  if (reset) ...
+- Avoid asynchronous reset completely.
+- Ensure deterministic behavior across runs
+- Avoid random or undefined initial values
+- Use non-blocking assignments (<=) inside sequential always blocks.
+- Use blocking assignments (=) only in combinational always @(*) blocks.
+
+- Always provide default assignments in combinational blocks:
+  → to avoid latch inference.
+
+- Do NOT infer latches under any condition.
+
+- Avoid:
+  - incomplete if/else
+  - missing default in case
+  - partial assignments
+
+- Keep FSMs simple and fully specified.
+
+- Avoid complex expressions in one line:
+  → use intermediate signals
+
+- Keep arithmetic widths explicit and safe.
+
+- Avoid:
+  - break / continue
+  - dynamic indexing in constant expressions
+  - unsupported constructs
+
+- Ensure outputs are stable and registered if sequential.
+
+GENERAL RULES:
+- Use the same language style as the signature.
+- Do not rename module or ports.
+- Do not add extra ports.
+- Do not include testbench code.
+- Output COMPLETE module from 'module' to 'endmodule'.
+
+CRITICAL:
+- Output ONLY RTL code.
+- NO explanation.
+- MUST start with 'module' and end with 'endmodule'.
+
+CRITICAL:
+- Do NOT explain anything.
+- Do NOT describe changes.
+- Do NOT reference files.
+- Output ONLY RTL code.
+- The output MUST start with 'module' and end with 'endmodule'.
