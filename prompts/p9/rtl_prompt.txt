@@ -1,0 +1,90 @@
+You are a hardware design expert.
+
+Generate synthesizable SystemVerilog RTL for the following specification.
+
+Module Name: fir_filter
+Description: Parameterized N-tap FIR (Finite Impulse Response) filter using pipelining for improved timing. Using integer values for all. Input samples are multiplied by fixed coefficients and accumulated in a pipelined fashion.
+
+Technology Node: SkyWater 130HD
+Clock Period: 8ns
+
+Parameters:
+- WIDTH = 16
+- N = 8
+
+Ports:
+- clk (input)
+- rst (input)
+- x_in (input)
+- h (input)
+- y_out (output)
+
+IMPORTANT:
+- Follow this exact module signature exactly:
+module fir_filter #(
+  parameter WIDTH = 16,
+  parameter N = 8
+) (
+  input  logic                             clk,
+  input  logic                             rst,
+  input  logic signed [WIDTH-1:0]          x_in,
+  input  logic signed [N-1:0][WIDTH-1:0]   h,
+  output logic signed [2*WIDTH+$clog2(N):0] y_out
+);
+
+
+SYNTHESIS RULES (VERY IMPORTANT):
+- Use ONLY synthesizable RTL (target: Yosys + OpenROAD).
+- Use synchronous reset ONLY:
+  - Use: always @(posedge clk)
+  - Do NOT use: posedge reset or negedge reset
+- Reset must be handled inside the clocked always block:
+  if (reset) ...
+- Avoid asynchronous reset completely.
+- Ensure deterministic behavior across runs
+- Avoid random or undefined initial values
+- Use non-blocking assignments (<=) inside sequential always blocks.
+- Use blocking assignments (=) only in combinational always @(*) blocks.
+
+- Always provide default assignments in combinational blocks:
+  → to avoid latch inference.
+
+- Do NOT infer latches under any condition.
+
+- Avoid:
+  - incomplete if/else
+  - missing default in case
+  - partial assignments
+
+- Keep FSMs simple and fully specified.
+
+- Avoid complex expressions in one line:
+  → use intermediate signals
+
+- Keep arithmetic widths explicit and safe.
+
+- Avoid:
+  - break / continue
+  - dynamic indexing in constant expressions
+  - unsupported constructs
+
+- Ensure outputs are stable and registered if sequential.
+
+GENERAL RULES:
+- Use the same language style as the signature.
+- Do not rename module or ports.
+- Do not add extra ports.
+- Do not include testbench code.
+- Output COMPLETE module from 'module' to 'endmodule'.
+
+CRITICAL:
+- Output ONLY RTL code.
+- NO explanation.
+- MUST start with 'module' and end with 'endmodule'.
+
+CRITICAL:
+- Do NOT explain anything.
+- Do NOT describe changes.
+- Do NOT reference files.
+- Output ONLY RTL code.
+- The output MUST start with 'module' and end with 'endmodule'.
