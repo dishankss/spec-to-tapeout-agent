@@ -1,0 +1,14 @@
+PASS
+Iterations: 1
+Expected: official TB
+Actual  : 2 -89 7 -121 11 -32 -21 39 
+B = 
+107 -59 7 -64 -21 47 -38 -120 
+Expected dot product: 7213
+PASS: Output = 7213
+/mnt/d/tempo/pytrial/vlsi_agent_project/generated/p5/tb.sv:68: $finish called at 16 (1s)
+
+POST_SYNTH: PASS
+OpenROAD: PASS
+GDS (original): /home/dusky/OpenROAD-flow-scripts/flow/results/sky130hd/dot_product/base/6_final.gds
+GDS (copied): /mnt/d/tempo/pytrial/vlsi_agent_project/generated/p5/openroad/dot_product.gds
