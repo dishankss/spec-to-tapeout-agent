@@ -1855,7 +1855,13 @@ def copy_openroad_results(problem_stem, module_name):
                 # Copy everything else as-is
                 else:
                     shutil.copy2(f, dst_dir / f.name)
-
+    # Force copy timing report
+    timing_src = src_dir / "timing.rpt"
+    if timing_src.exists():
+        shutil.copy2(timing_src, dst_dir / "timing.rpt")
+        print(f"[{module_name}] timing.rpt copied")
+    else:
+        print(f"[{module_name}] timing.rpt NOT found")               
 def get_final_gds_path(module_name):
     return OPENROAD_FLOW_ROOT / "results" / OPENROAD_PLATFORM / module_name / "base" / "6_final.gds"
 
@@ -2259,6 +2265,12 @@ Additional rules:
 
                 gds_path = get_final_gds_path(module_name)
                 if or_result.returncode == 0 and gds_path.exists():
+                    timing_generated, _, _ = generate_timing_report(module_name)
+
+                    if timing_generated:
+                        print(f"[{module_name}] Timing report generated")
+                    else:
+                        print(f"[{module_name}] Timing report FAILED")
                     copy_openroad_results(problem_stem, module_name)
                     copied_gds = GEN_DIR / problem_stem / "openroad" / f"{module_name}.gds"
                     save_text(
@@ -2271,12 +2283,7 @@ Additional rules:
                     )
                     summary.append(f"{problem_stem}: PASS in {iteration} iteration(s)")
                     print("OpenROAD PASS, GDS generated")
-                    timing_generated, _, _ = generate_timing_report(module_name)
-
-                    if timing_generated:
-                        print(f"[{module_name}]  Timing report generated")
-                    else:
-                        print(f"[{module_name}]  Timing report generation FAILED")                  
+                  
                 else:
                     save_text(
                         status_file,
