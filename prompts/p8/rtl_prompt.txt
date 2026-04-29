@@ -1,0 +1,111 @@
+You are a hardware design expert.
+
+Generate synthesizable SystemVerilog RTL for the following specification.
+
+Module Name: fp16_multiplier
+Description: 16-bit floating-point multiplier (IEEE 754 half-precision compatible) with support for zero detection and rounding to nearest even. Takes two 16-bit FP16 inputs and computes the product in a single cycle.
+
+    Additional rules for this module (VERY IMPORTANT):
+
+    - Implement IEEE-like FP16 multiply (sign, exponent, mantissa).
+    - DO NOT use undefined intermediate signals.
+    - DO NOT leave any signals unassigned.
+
+    - Always initialize ALL temporary signals.
+    - Avoid partial assignments in always blocks.
+
+    - Use ONLY:
+    - assign statements OR
+    - fully specified always @(*) blocks
+
+    - If using always @(*):
+    → assign default values at top of block
+
+    - DO NOT infer latches under any condition.
+
+    - Keep logic simple:
+    - extract sign, exponent, mantissa
+    - multiply mantissas
+    - normalize result
+    - adjust exponent
+
+    - All outputs must be deterministic (no 'x').
+
+    - Avoid deeply nested expressions.
+
+    CRITICAL:
+    - Output must be fully synthesizable
+    - No syntax errors
+    
+Technology Node: SkyWater 130HD
+Clock Period: 9ns
+
+Ports:
+- a (input) 16
+- b (input) 16
+- result (output) 16
+
+IMPORTANT:
+- Follow this exact module signature exactly:
+module fp16_multiplier(
+  input  logic [15:0] a,
+  input  logic [15:0] b,
+  output logic [15:0] result
+);
+
+
+SYNTHESIS RULES (VERY IMPORTANT):
+- Use ONLY synthesizable RTL (target: Yosys + OpenROAD).
+- Use synchronous reset ONLY:
+  - Use: always @(posedge clk)
+  - Do NOT use: posedge reset or negedge reset
+- Reset must be handled inside the clocked always block:
+  if (reset) ...
+- Avoid asynchronous reset completely.
+- Ensure deterministic behavior across runs
+- Avoid random or undefined initial values
+- Use non-blocking assignments (<=) inside sequential always blocks.
+- Use blocking assignments (=) only in combinational always @(*) blocks.
+
+- Always provide default assignments in combinational blocks:
+  → to avoid latch inference.
+
+- Do NOT infer latches under any condition.
+
+- Avoid:
+  - incomplete if/else
+  - missing default in case
+  - partial assignments
+
+- Keep FSMs simple and fully specified.
+
+- Avoid complex expressions in one line:
+  → use intermediate signals
+
+- Keep arithmetic widths explicit and safe.
+
+- Avoid:
+  - break / continue
+  - dynamic indexing in constant expressions
+  - unsupported constructs
+
+- Ensure outputs are stable and registered if sequential.
+
+GENERAL RULES:
+- Use the same language style as the signature.
+- Do not rename module or ports.
+- Do not add extra ports.
+- Do not include testbench code.
+- Output COMPLETE module from 'module' to 'endmodule'.
+
+CRITICAL:
+- Output ONLY RTL code.
+- NO explanation.
+- MUST start with 'module' and end with 'endmodule'.
+
+CRITICAL:
+- Do NOT explain anything.
+- Do NOT describe changes.
+- Do NOT reference files.
+- Output ONLY RTL code.
+- The output MUST start with 'module' and end with 'endmodule'.
