@@ -1,0 +1,17 @@
+PASS
+Iterations: 1
+Expected: official TB
+Actual  : 000000000000000
+  PASS
+
+Test 3: -3.0 * 4.0:
+  result   = 1100101000000000
+  expected = 1100101000000000
+  PASS
+
+/mnt/d/tempo/pytrial/vlsi_agent_project/generated/p8/tb.sv:46: $finish called at 3 (1s)
+
+POST_SYNTH: PASS
+OpenROAD: PASS
+GDS (original): /home/dusky/OpenROAD-flow-scripts/flow/results/sky130hd/fp16_multiplier/base/6_final.gds
+GDS (copied): /mnt/d/tempo/pytrial/vlsi_agent_project/generated/p8/openroad/fp16_multiplier.gds
