@@ -1,0 +1,49 @@
+Startpoint: x3_s1[22]$_SDFFE_PP0P_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: exp_out[8]$_SDFFE_PP0P_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+    Delay      Time   Description
+-------------------------------------------------------------
+   0.0000    0.0000   clock clk (rise edge)
+   0.2850    0.2850   clock network delay (propagated)
+   0.0000    0.2850 ^ x3_s1[22]$_SDFFE_PP0P_/CLK (sky130_fd_sc_hd__dfxtp_4)
+   0.3465    0.6315 v x3_s1[22]$_SDFFE_PP0P_/Q (sky130_fd_sc_hd__dfxtp_4)
+   0.2827    0.9142 ^ _1625_/SUM (sky130_fd_sc_hd__ha_4)
+   0.2717    1.1859 v _0925_/X (sky130_fd_sc_hd__and4b_2)
+   0.1854    1.3713 ^ _0950_/Y (sky130_fd_sc_hd__o21ai_4)
+   0.2883    1.6596 ^ _0994_/X (sky130_fd_sc_hd__and4b_2)
+   0.0823    1.7419 v _0995_/Y (sky130_fd_sc_hd__a221oi_4)
+   0.3834    2.1253 v _1028_/X (sky130_fd_sc_hd__or3_1)
+   0.2076    2.3328 v _1030_/X (sky130_fd_sc_hd__a32o_1)
+   0.1791    2.5120 v _1036_/X (sky130_fd_sc_hd__and4_4)
+   0.1142    2.6262 ^ _1037_/Y (sky130_fd_sc_hd__o21ai_1)
+   0.4895    3.1157 v _1529_/SUM (sky130_fd_sc_hd__fa_2)
+   0.1792    3.2949 v _1619_/COUT (sky130_fd_sc_hd__ha_4)
+   0.1526    3.4475 v _1537_/COUT (sky130_fd_sc_hd__ha_4)
+   0.3316    3.7790 v _1522_/COUT (sky130_fd_sc_hd__fa_2)
+   0.1626    3.9417 v _1375_/X (sky130_fd_sc_hd__a21o_1)
+   0.1645    4.1061 v _1376_/X (sky130_fd_sc_hd__a21o_1)
+   0.1662    4.2723 v _1377_/X (sky130_fd_sc_hd__a21o_1)
+   0.1382    4.4105 ^ _1378_/Y (sky130_fd_sc_hd__a21oi_2)
+   0.1373    4.5479 ^ _1379_/Y (sky130_fd_sc_hd__xnor2_1)
+   0.0956    4.6434 v _1380_/Y (sky130_fd_sc_hd__mux2i_1)
+   0.0969    4.7403 ^ _1381_/Y (sky130_fd_sc_hd__nor2_1)
+   0.0001    4.7404 ^ exp_out[8]$_SDFFE_PP0P_/D (sky130_fd_sc_hd__dfxtp_1)
+             4.7404   data arrival time
+
+   4.5000    4.5000   clock clk (rise edge)
+   0.2888    4.7888   clock network delay (propagated)
+   0.0000    4.7888   clock reconvergence pessimism
+             4.7888 ^ exp_out[8]$_SDFFE_PP0P_/CLK (sky130_fd_sc_hd__dfxtp_1)
+  -0.0596    4.7292   library setup time
+             4.7292   data required time
+-------------------------------------------------------------
+             4.7292   data required time
+            -4.7404   data arrival time
+-------------------------------------------------------------
+            -0.0112   slack (VIOLATED)
+
+
