@@ -5,15 +5,20 @@ module seq_detector_0011(
     output reg detected
 );
 
-reg [3:0] history;
+reg [3:0] shift_reg;
+reg [3:0] next_shift;
 
 always @(posedge clk) begin
     if (reset) begin
-        history <= 4'b0000;
+        shift_reg <= 4'b0000;
         detected <= 1'b0;
     end else begin
-        detected <= (history == 4'b0011);
-        history <= {history[2:0], data_in};
+        next_shift = {shift_reg[2:0], data_in};
+        shift_reg <= next_shift;
+        if (next_shift == 4'b0011)
+            detected <= 1'b1;
+        else
+            detected <= 1'b0;
     end
 end
 
