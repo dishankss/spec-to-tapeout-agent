@@ -1,0 +1,10 @@
+PASS
+Iterations: 1
+Expected: official TB
+Actual  : y_out = 336, expected = 336
+y_out = 372, expected = 372
+y_out = 408, expected = 408
+POST_SYNTH: PASS
+OpenROAD: PASS
+GDS (original): /home/dusky/OpenROAD-flow-scripts/flow/results/sky130hd/fir_filter/base/6_final.gds
+GDS (copied): /mnt/d/tempo/pytrial/vlsi_agent_project/generated/p9/openroad/fir_filter.gds
