@@ -1,0 +1,96 @@
+You are a hardware design expert.
+
+Generate synthesizable SystemVerilog RTL for the following specification.
+
+Module Name: exp_fixed_point
+Description: A 2-stage pipelined exponential function for unsigned fixed-point inputs using a 3-term Taylor  series approximation: e^x ≈ 1 + x + x^2/2 + x^3/6. Inputs are unsigned fixed-point values in  UQ1.(WIDTH-1) format (e.g., WIDTH = 8 implies UQ1.7). The output is in UQ(WIDTH+1).(WIDTH - 1) format.
+Additional rules for this module:
+- Keep the design pipelined and synthesizable.
+- Avoid constant part-selects inside always blocks.
+- Avoid indefinite-width concatenations.
+- Use explicit intermediate registers for x^2 and x^3.
+- Keep all arithmetic widths explicit.
+- Do not try to compress the whole Taylor series into one expression.
+- The output is pipelined and may appear after a few cycles of latency.
+
+Technology Node: SkyWater 130HD
+Clock Period: 4.5ns
+
+Parameters:
+- WIDTH = 8
+
+Ports:
+- clk (input)
+- rst (input)
+- enable (input)
+- x_in (input) WIDTH
+- exp_out (output) 2*WIDTH
+
+IMPORTANT:
+- Follow this exact module signature exactly:
+module exp_fixed_point #(
+  parameter WIDTH = 8
+) (
+  input  logic               clk,
+  input  logic               rst,
+  input  logic               enable,
+  input  logic [WIDTH-1:0]   x_in,
+  output logic [2*WIDTH-1:0] exp_out
+);
+
+
+SYNTHESIS RULES (VERY IMPORTANT):
+- Use ONLY synthesizable RTL (target: Yosys + OpenROAD).
+- Use synchronous reset ONLY:
+  - Use: always @(posedge clk)
+  - Do NOT use: posedge reset or negedge reset
+- Reset must be handled inside the clocked always block:
+  if (reset) ...
+- Avoid asynchronous reset completely.
+- Ensure deterministic behavior across runs
+- Avoid random or undefined initial values
+- Use non-blocking assignments (<=) inside sequential always blocks.
+- Use blocking assignments (=) only in combinational always @(*) blocks.
+
+- Always provide default assignments in combinational blocks:
+  → to avoid latch inference.
+
+- Do NOT infer latches under any condition.
+
+- Avoid:
+  - incomplete if/else
+  - missing default in case
+  - partial assignments
+
+- Keep FSMs simple and fully specified.
+
+- Avoid complex expressions in one line:
+  → use intermediate signals
+
+- Keep arithmetic widths explicit and safe.
+
+- Avoid:
+  - break / continue
+  - dynamic indexing in constant expressions
+  - unsupported constructs
+
+- Ensure outputs are stable and registered if sequential.
+
+GENERAL RULES:
+- Use the same language style as the signature.
+- Do not rename module or ports.
+- Do not add extra ports.
+- Do not include testbench code.
+- Output COMPLETE module from 'module' to 'endmodule'.
+
+CRITICAL:
+- Output ONLY RTL code.
+- NO explanation.
+- MUST start with 'module' and end with 'endmodule'.
+
+CRITICAL:
+- Do NOT explain anything.
+- Do NOT describe changes.
+- Do NOT reference files.
+- Output ONLY RTL code.
+- The output MUST start with 'module' and end with 'endmodule'.
