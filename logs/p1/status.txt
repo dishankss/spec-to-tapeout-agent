@@ -1,0 +1,10 @@
+PASS
+Iterations: 2
+Expected: official TB
+Actual  : Test PASSED!
+/mnt/d/tempo/pytrial/vlsi_agent_project/generated/p1/tb.sv:44: $finish called at 165 (1s)
+
+POST_SYNTH: PASS
+OpenROAD: PASS
+GDS (original): /home/dusky/OpenROAD-flow-scripts/flow/results/sky130hd/seq_detector_0011/base/6_final.gds
+GDS (copied): /mnt/d/tempo/pytrial/vlsi_agent_project/generated/p1/openroad/seq_detector_0011.gds
