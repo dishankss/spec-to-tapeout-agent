@@ -1,0 +1,90 @@
+The generated Verilog code compiled and ran, but failed verification.
+
+Module Name: seq_detector_0011
+Description: Detects a binary sequence "0011" in the input stream.
+
+Expected:
+official TB
+
+Actual:
+ERROR at bit 0: data_in=0 detected=x expected=0
+Test FAILED: 1 errors found.
+/mnt/d/tempo/pytrial/vlsi_agent_project/generated/p1/tb.sv:44: $finish called at 165 (1s)
+
+
+Please correct the RTL so that verification passes.
+
+IMPORTANT:
+- Follow this exact module signature exactly:
+module seq_detector_0011(
+    input clk,
+    input reset,
+    input data_in,
+    output reg detected
+);
+
+
+SYNTHESIS RULES (VERY IMPORTANT):
+- Use ONLY synthesizable RTL (target: Yosys + OpenROAD).
+- Use synchronous reset ONLY:
+  - Use: always @(posedge clk)
+  - Do NOT use: posedge reset or negedge reset
+- Reset must be handled inside the clocked always block:
+  if (reset) ...
+- Avoid asynchronous reset completely.
+- Ensure deterministic behavior across runs
+- Avoid random or undefined initial values
+- Use non-blocking assignments (<=) inside sequential always blocks.
+- Use blocking assignments (=) only in combinational always @(*) blocks.
+
+- Always provide default assignments in combinational blocks:
+  → to avoid latch inference.
+
+- Do NOT infer latches under any condition.
+
+- Avoid:
+  - incomplete if/else
+  - missing default in case
+  - partial assignments
+
+- Keep FSMs simple and fully specified.
+
+- Avoid complex expressions in one line:
+  → use intermediate signals
+
+- Keep arithmetic widths explicit and safe.
+
+- Avoid:
+  - break / continue
+  - dynamic indexing in constant expressions
+  - unsupported constructs
+
+- Ensure outputs are stable and registered if sequential.
+
+GENERAL RULES:
+- Use the same language style as the signature.
+- Do not rename module or ports.
+- Do not add extra ports.
+- Do not include testbench code.
+- Output COMPLETE module from 'module' to 'endmodule'.
+
+CRITICAL:
+- Output ONLY RTL code.
+- NO explanation.
+- MUST start with 'module' and end with 'endmodule'.
+
+CRITICAL:
+- Do NOT explain anything.
+- Do NOT describe changes.
+- Do NOT reference files.
+- Output ONLY RTL code.
+- The output MUST start with 'module' and end with 'endmodule'.
+
+
+Additional guidance:
+- Fix synthesis issues related to reset style and latch inference.
+- Ensure synchronous reset and fully specified combinational logic.
+- Preserve the exact behavior required by the specification.
+- If the bug is timing/latency related, adjust output timing carefully.
+- If the bug is arithmetic related, check signedness and width extension carefully.
+- If the bug is control related, check reset and enable behavior carefully.
