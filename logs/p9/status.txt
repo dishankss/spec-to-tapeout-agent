@@ -1,4 +1,0 @@
-FAIL
-Iteration: 4
-Expected: y_out=[1, 4, 10, 20, 35, 56, 84, 120]
-Actual  : y_out=[]
